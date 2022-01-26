@@ -4,7 +4,7 @@ import reducers from "./reducers";
 
 const store = createStore(reducers, {});
 
-export const { goToPrevPage, goToNextPage, goToSelectedPage, setCharacters, setCount } = bindActionCreators(
+export const { goToPrevPage, goToNextPage, goToSelectedPage, setCharacters, setCount, setQuery } = bindActionCreators(
     creators,
     store.dispatch
 );

@@ -1,16 +1,16 @@
 import { FC, FormEvent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { goToNextPage, goToPrevPage, goToSelectedPage, RootState } from "../state/store";
-
-const perPage = 20;
+import PaginationButton from "./PaginationButton";
+import config from "../config";
 
 const Pagination: FC = () => {
     const [inputValue, setInputValue] = useState("");
-    const page = useSelector((state: RootState) => state.page);
+    const page = useSelector((state: RootState) => state.criteria.page);
     const count = useSelector((state: RootState) => state.count);
-    const maxPages = Math.ceil(count / perPage);
+    const maxPages = Math.ceil(count / config.perPage);
     const submitHandler = (e: FormEvent) => {
-        goToSelectedPage(+inputValue);
+        goToSelectedPage(Math.min(Math.max(+inputValue, 1), maxPages));
         e.preventDefault();
     };
 
@@ -19,10 +19,11 @@ const Pagination: FC = () => {
     }, [page]);
 
     return (
-        <div>
-            <button onClick={() => page > 1 && goToPrevPage()}>prev</button> {page}
-            <button onClick={() => page < maxPages && goToNextPage()}>next</button>
-            <form onSubmit={submitHandler}>
+        <div className="flex gap-2 items-center w-full">
+            <PaginationButton disabled={page === 1} clickHandler={() => page > 1 && goToPrevPage()}>
+                &lt;
+            </PaginationButton>
+            <form onSubmit={submitHandler} onBlur={submitHandler}>
                 <input
                     type="number"
                     name="page"
@@ -30,9 +31,12 @@ const Pagination: FC = () => {
                     max={maxPages}
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
+                    className="border p-1 text-center rounded border-gray-400"
                 />
-                <button type="submit">Go to</button>
             </form>
+            <PaginationButton disabled={page === maxPages} clickHandler={() => page < maxPages && goToNextPage()}>
+                &gt;
+            </PaginationButton>
         </div>
     );
 };

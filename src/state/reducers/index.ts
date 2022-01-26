@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
-import PageReducer from "./pageReducer";
+import criteriaReducer from "./criteriaReducer";
 import charactersReducer from "./charactersReducer";
 import countReducer from "./countReducer";
 
-const reducers = combineReducers({ page: PageReducer, characters: charactersReducer, count: countReducer });
+const reducers = combineReducers({
+    criteria: criteriaReducer,
+    characters: charactersReducer,
+    count: countReducer
+});
 
 export default reducers;

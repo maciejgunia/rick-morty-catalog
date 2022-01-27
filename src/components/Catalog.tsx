@@ -1,7 +1,6 @@
 import { FC } from "react";
-import Pagination from "./Pagination";
 import CharacterList from "./CharacterList";
-import Search from "./Search";
+import Header from "./Header";
 import useFetchCharacters from "../hooks/useFetchCharacters";
 
 const Catalog: FC = () => {
@@ -9,8 +8,7 @@ const Catalog: FC = () => {
 
     return (
         <div className="flex flex-col gap-2 max-w-screen-lg mx-auto p-2">
-            <Search />
-            <Pagination />
+            <Header />
             <CharacterList />
         </div>
     );

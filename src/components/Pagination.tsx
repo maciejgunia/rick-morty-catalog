@@ -19,7 +19,7 @@ const Pagination: FC = () => {
     }, [page]);
 
     return (
-        <div className="flex gap-2 items-center w-full">
+        <div className="flex gap-2 items-center">
             <PaginationButton disabled={page === 1} clickHandler={() => page > 1 && goToPrevPage()}>
                 &lt;
             </PaginationButton>
@@ -31,7 +31,7 @@ const Pagination: FC = () => {
                     max={maxPages}
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="border p-1 text-center rounded border-gray-400"
+                    className="border p-1 text-center rounded border-gray-400 w-8"
                 />
             </form>
             <PaginationButton disabled={page === maxPages} clickHandler={() => page < maxPages && goToNextPage()}>

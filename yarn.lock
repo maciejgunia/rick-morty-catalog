@@ -8177,6 +8177,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+usehooks-ts@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/usehooks-ts/-/usehooks-ts-2.2.2.tgz#4e06d30dd814811d2f730ef1fedbec1df730efc1"
+  integrity sha512-hx+GtJAQYJHonJ+zuDkXD9pwkd34MRxY2Ds9ViNe4o39oRHoPb13wPLkhiaJb4PhNfKQ2JoeFZQQLGgJAOzqiQ==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"

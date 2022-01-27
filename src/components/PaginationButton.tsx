@@ -8,7 +8,7 @@ const PaginationButton: FC<{ disabled: boolean; clickHandler: () => void }> = ({
     return (
         <button
             disabled={disabled}
-            className="py-1 px-2 border rounded bg-gray-400 text-gray-200 disabled:bg-gray-100 hover:bg-gray-600 transition-colors"
+            className="py-1 px-2 w-8 border rounded bg-gray-400 text-gray-200 disabled:bg-gray-100 hover:bg-gray-600 transition-colors"
             onClick={clickHandler}
         >
             {children}

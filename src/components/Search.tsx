@@ -1,17 +1,22 @@
-import { FC, FormEvent } from "react";
+import { FC, useEffect, useState } from "react";
 import { setQuery } from "../state/store";
+import { useDebounce } from "usehooks-ts";
 
 const Search: FC = () => {
-    const submitHandler = (e: FormEvent) => {
-        console.dir(new FormData(e.target as HTMLFormElement).get("query"));
-        setQuery(`${new FormData(e.target as HTMLFormElement).get("query")}`);
-        e.preventDefault();
-    };
+    const [inputValue, setInputValue] = useState("");
+    const debouncedValue = useDebounce(inputValue, 500);
+
+    useEffect(() => {
+        setQuery(debouncedValue);
+    }, [debouncedValue]);
 
     return (
-        <form onSubmit={submitHandler}>
-            <input type="text" name="query" />
-        </form>
+        <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            className="border rounded w-full p-2"
+        />
     );
 };
 

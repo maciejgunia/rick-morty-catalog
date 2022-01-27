@@ -23,18 +23,23 @@ const useFetchCharacters = () => {
         }`;
 
         async function fetchData() {
-            const response = await fetch(baseUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({ query })
-            });
+            try {
+                const response = await fetch(baseUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json"
+                    },
+                    body: JSON.stringify({ query })
+                });
+                const data = await response.json();
 
-            const data = await response.json();
-            setCharacters(data?.data.characters.results);
-            setCount(data?.data.characters.info.count);
+                setCharacters(data?.data.characters.results);
+                setCount(data?.data.characters.info.count);
+            } catch (e) {
+                setCharacters([]);
+                setCount(0);
+            }
         }
 
         fetchData();

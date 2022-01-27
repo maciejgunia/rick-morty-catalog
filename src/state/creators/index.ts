@@ -1,17 +1,17 @@
-import goToNextPageCreator from "./nextPageCreator";
-import goToPrevPageCreator from "./prevPageCreator";
-import goToSelectedPageCreator from "./selectedPageCreator";
+import incrementPageCreator from "./incrementPageCreator";
+import setPageCreator from "./setPageCreator";
 import setCharactersCreator from "./setCharactersCreator";
-import setCountCreator from "./setCountCreator";
+import setPages from "./setPagesCreator";
 import setQueryCreator from "./setQueryCreator";
 import setCriteriaCreator from "./setCriteriaCreator";
+import decrementPageCreator from "./decrementPageCreator";
 
 export enum ACTIONS {
-    NEXT_PAGE = "nextPage",
-    PREV_PAGE = "prevPage",
-    SELECTED_PAGE = "selectedPage",
+    INCREMENT_PAGE = "incrementPage",
+    DECREMENT_PAGE = "decrementPage",
+    SET_PAGE = "setPage",
     SET_CHARACTERS = "setCharacters",
-    SET_COUNT = "setCount",
+    SET_PAGES = "setPages",
     SET_QUERY = "setQuery",
     SET_CRITERIA = "setCriteria"
 }
@@ -22,11 +22,11 @@ export type Action = {
 };
 
 const creators = {
-    goToPrevPage: goToPrevPageCreator,
-    goToNextPage: goToNextPageCreator,
-    goToSelectedPage: goToSelectedPageCreator,
+    decrementPage: decrementPageCreator,
+    incrementPage: incrementPageCreator,
+    setPage: setPageCreator,
     setCharacters: setCharactersCreator,
-    setCount: setCountCreator,
+    setPages: setPages,
     setQuery: setQueryCreator,
     setCriteria: setCriteriaCreator
 };

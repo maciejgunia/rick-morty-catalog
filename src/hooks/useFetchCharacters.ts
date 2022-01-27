@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import getUrlParams from "../helpers/getUrlParams";
-import { RootState, setCharacters, setCount } from "../state/store";
+import { RootState, setCharacters, setPages } from "../state/store";
 
 const useFetchCharacters = () => {
     const criteria = useSelector((state: RootState) => state.criteria);
@@ -15,7 +15,7 @@ const useFetchCharacters = () => {
         const query = `{
             characters(page: ${criteria.page}, filter: { name: "${criteria.query}" }) {
               info {
-                count
+                pages
               }
               results {
                 id
@@ -38,10 +38,11 @@ const useFetchCharacters = () => {
                 const data = await response.json();
 
                 setCharacters(data?.data.characters.results);
-                setCount(data?.data.characters.info.count);
+                setPages(data?.data.characters.info.pages);
             } catch (e) {
+                console.error(e);
                 setCharacters([]);
-                setCount(0);
+                setPages(0);
             }
         }
 

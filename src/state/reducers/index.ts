@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import criteriaReducer from "./criteriaReducer";
 import charactersReducer from "./charactersReducer";
-import countReducer from "./countReducer";
+import pagesReducer from "./pagesReducer";
 
 const reducers = combineReducers({
     criteria: criteriaReducer,
     characters: charactersReducer,
-    count: countReducer
+    pages: pagesReducer
 });
 
 export default reducers;

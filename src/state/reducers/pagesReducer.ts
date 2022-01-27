@@ -1,12 +1,12 @@
 import { ACTIONS } from "../creators";
 
-const countReducer = (state: number = 0, action: any) => {
+const pagesReducer = (state: number = 0, action: any) => {
     switch (action.type) {
-        case ACTIONS.SET_COUNT:
+        case ACTIONS.SET_PAGES:
             return action.payload;
         default:
             return state;
     }
 };
 
-export default countReducer;
+export default pagesReducer;

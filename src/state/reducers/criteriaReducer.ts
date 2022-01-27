@@ -1,9 +1,8 @@
 import { ACTIONS } from "../creators";
+import getUrlParams from "../../helpers/getUrlParams";
 
-const pageParam = +(new URLSearchParams(document.location.search).get("page") || "1");
-const initialPage = isNaN(pageParam) ? 1 : pageParam;
-
-const criteriaReducer = (state: { page: number; query: string } = { page: initialPage, query: "" }, action: any) => {
+// TODO: type action payloads
+const criteriaReducer = (state: { page: number; query: string } = getUrlParams(), action: any) => {
     switch (action.type) {
         case ACTIONS.PREV_PAGE:
             return { ...state, page: state.page - 1 };
@@ -12,7 +11,11 @@ const criteriaReducer = (state: { page: number; query: string } = { page: initia
         case ACTIONS.SELECTED_PAGE:
             return { ...state, page: action.payload };
         case ACTIONS.SET_QUERY:
-            return { page: 1, query: action.payload };
+            return state.query !== action.payload ? { page: 1, query: action.payload } : state;
+        case ACTIONS.SET_CRITERIA:
+            return state.query !== action.payload.query || state.page !== action.payload.page
+                ? { page: action.payload.page, query: action.payload.query }
+                : state;
         default:
             return state;
     }

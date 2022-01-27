@@ -1,9 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { setQuery } from "../state/store";
 import { useDebounce } from "usehooks-ts";
+import getUrlParams from "../helpers/getUrlParams";
 
 const Search: FC = () => {
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(getUrlParams().query);
     const debouncedValue = useDebounce(inputValue, 500);
 
     useEffect(() => {

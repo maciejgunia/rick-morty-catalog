@@ -4,6 +4,7 @@ import goToSelectedPageCreator from "./selectedPageCreator";
 import setCharactersCreator from "./setCharactersCreator";
 import setCountCreator from "./setCountCreator";
 import setQueryCreator from "./setQueryCreator";
+import setCriteriaCreator from "./setCriteriaCreator";
 
 export enum ACTIONS {
     NEXT_PAGE = "nextPage",
@@ -11,7 +12,8 @@ export enum ACTIONS {
     SELECTED_PAGE = "selectedPage",
     SET_CHARACTERS = "setCharacters",
     SET_COUNT = "setCount",
-    SET_QUERY = "setQuery"
+    SET_QUERY = "setQuery",
+    SET_CRITERIA = "setCriteria"
 }
 
 export type Action = {
@@ -25,7 +27,8 @@ const creators = {
     goToSelectedPage: goToSelectedPageCreator,
     setCharacters: setCharactersCreator,
     setCount: setCountCreator,
-    setQuery: setQueryCreator
+    setQuery: setQueryCreator,
+    setCriteria: setCriteriaCreator
 };
 
 export default creators;

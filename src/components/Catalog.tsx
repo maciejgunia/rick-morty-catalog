@@ -1,9 +1,17 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import CharacterList from "./CharacterList";
 import Header from "./Header";
 import useFetchCharacters from "../hooks/useFetchCharacters";
+import { useLocation } from "react-router-dom";
+import getUrlParams from "../helpers/getUrlParams";
+import { setCriteria } from "../state/store";
 
 const Catalog: FC = () => {
+    let location = useLocation();
+
+    useEffect(() => {
+        setCriteria(getUrlParams());
+    }, [location]);
     useFetchCharacters();
 
     return (

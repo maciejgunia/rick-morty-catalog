@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import getUrlParams from "../helpers/getUrlParams";
 import { RootState, setCharacters, setCount } from "../state/store";
 
 const useFetchCharacters = () => {
@@ -9,6 +10,8 @@ const useFetchCharacters = () => {
     const baseUrl = "https://rickandmortyapi.com/graphql";
 
     useEffect(() => {
+        const currentParams = getUrlParams();
+        let params: { page?: string; query?: string } = {};
         const query = `{
             characters(page: ${criteria.page}, filter: { name: "${criteria.query}" }) {
               info {
@@ -43,7 +46,17 @@ const useFetchCharacters = () => {
         }
 
         fetchData();
-        setSearchParams(criteria.page > 1 ? { page: criteria.page } : {});
+
+        if (criteria.query !== currentParams.query || criteria.page !== currentParams.page) {
+            if (criteria.query.length > 0) {
+                params.query = criteria.query;
+            }
+
+            if (criteria.page > 1) {
+                params.page = criteria.page;
+            }
+            setSearchParams(params);
+        }
     }, [criteria, setSearchParams]);
 };
 

@@ -1,7 +1,7 @@
-import { ACTIONS } from ".";
+import { ACTION_TYPES } from ".";
 
 const setCharactersCreator = (payload: any[]) => ({
-    type: ACTIONS.SET_CHARACTERS,
+    type: ACTION_TYPES.SET_CHARACTERS,
     payload
 });
 

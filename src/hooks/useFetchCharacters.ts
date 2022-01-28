@@ -54,7 +54,7 @@ const useFetchCharacters = () => {
             }
 
             if (criteria.page > 1) {
-                params.page = criteria.page;
+                params.page = `${criteria.page}`;
             }
             setSearchParams(params);
         }

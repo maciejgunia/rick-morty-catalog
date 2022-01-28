@@ -1,8 +1,8 @@
-import { ACTIONS } from "../creators";
+import { ACTION_TYPES } from "../creators";
 
 const pagesReducer = (state: number = 0, action: any) => {
     switch (action.type) {
-        case ACTIONS.SET_PAGES:
+        case ACTION_TYPES.SET_PAGES:
             return action.payload;
         default:
             return state;

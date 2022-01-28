@@ -1,7 +1,7 @@
-import { ACTIONS } from ".";
+import { ACTION_TYPES } from ".";
 
 const setCriteriaCreator = (payload: { query: string; page: number }) => ({
-    type: ACTIONS.SET_CRITERIA,
+    type: ACTION_TYPES.SET_CRITERIA,
     payload
 });
 

@@ -6,7 +6,7 @@ import setQueryCreator from "./setQueryCreator";
 import setCriteriaCreator from "./setCriteriaCreator";
 import decrementPageCreator from "./decrementPageCreator";
 
-export enum ACTIONS {
+export enum ACTION_TYPES {
     INCREMENT_PAGE = "incrementPage",
     DECREMENT_PAGE = "decrementPage",
     SET_PAGE = "setPage",
@@ -16,10 +16,25 @@ export enum ACTIONS {
     SET_CRITERIA = "setCriteria"
 }
 
-export type Action = {
-    type: ACTIONS;
-    payload: any;
+type QueryAction = {
+    type: ACTION_TYPES.SET_QUERY;
+    payload: string;
 };
+
+type PageAction = {
+    type: ACTION_TYPES.SET_PAGE | ACTION_TYPES.INCREMENT_PAGE | ACTION_TYPES.DECREMENT_PAGE;
+    payload: number;
+};
+
+type CriteriaAction = {
+    type: ACTION_TYPES.SET_CRITERIA;
+    payload: {
+        query: string;
+        page: number;
+    };
+};
+
+export type CatalogAction = QueryAction | PageAction | CriteriaAction;
 
 const creators = {
     decrementPage: decrementPageCreator,

@@ -13,7 +13,7 @@ const Pagination: FC = () => {
     };
 
     useEffect(() => {
-        setInputValue(page);
+        setInputValue(`${page}`);
     }, [page]);
 
     return (

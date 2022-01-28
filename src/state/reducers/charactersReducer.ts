@@ -1,8 +1,8 @@
-import { ACTIONS } from "../creators";
+import { ACTION_TYPES } from "../creators";
 
 const charactersReducer = (state: any[] = [], action: any) => {
     switch (action.type) {
-        case ACTIONS.SET_CHARACTERS:
+        case ACTION_TYPES.SET_CHARACTERS:
             return action.payload;
         default:
             return state;

@@ -1,7 +1,7 @@
-import { ACTIONS } from ".";
+import { ACTION_TYPES } from ".";
 
 const incrementPageCreator = () => ({
-    type: ACTIONS.INCREMENT_PAGE
+    type: ACTION_TYPES.INCREMENT_PAGE
 });
 
 export default incrementPageCreator;

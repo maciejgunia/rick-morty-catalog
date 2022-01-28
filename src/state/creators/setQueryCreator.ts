@@ -1,7 +1,7 @@
-import { ACTIONS } from ".";
+import { ACTION_TYPES } from ".";
 
 const setQueryCreator = (payload: string) => ({
-    type: ACTIONS.SET_QUERY,
+    type: ACTION_TYPES.SET_QUERY,
     payload
 });
 

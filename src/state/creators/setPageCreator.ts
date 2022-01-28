@@ -1,7 +1,7 @@
-import { ACTIONS } from ".";
+import { ACTION_TYPES } from ".";
 
 const setPage = (payload: number) => ({
-    type: ACTIONS.SET_PAGE,
+    type: ACTION_TYPES.SET_PAGE,
     payload
 });
 
